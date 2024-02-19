@@ -14,10 +14,11 @@ function Map() {
   const [locations, setLocations] = useState([]);
 
   useEffect(() => {
+    
     // Fetch the locations from the API
-    fetch('https://api.example.com/locations')
+    fetch('https://alhusengeneralimportandexport.com/api/shop/getAll')
       .then((response) => response.json())
-      .then((data) => setLocations(data))
+      .then((data) => setLocations(data.shops))
       .catch((error) => console.log(error));
   }, []);
 
@@ -35,10 +36,12 @@ function Map() {
           position={[location.latitude, location.longitude]}
           icon={customIcon}
         >
-          <Popup>{location.name}</Popup>
+          <Popup>{location.shopName}</Popup>
         </Marker>
       ))}
     </MapContainer>
+
+    
   );
 }
 
